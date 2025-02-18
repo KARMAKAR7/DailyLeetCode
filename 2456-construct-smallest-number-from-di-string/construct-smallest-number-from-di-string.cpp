@@ -1,33 +1,24 @@
 class Solution {
 public:
-    string smallestNumber(string pattern) {
-        return to_string(findSmallestNumber(pattern, 0, 0, 0));
+    bool mathaches(string & res , string & pattern){
+        for(int i = 0 ;i < pattern.length();i++){
+            if((pattern[i] == 'I' && res[i] > res[i+1])||
+               (pattern[i] == 'D' && res[i] < res[i+1])){
+                   return 0;
+            }
+        }
+        return 1;
     }
-
-private:
-    // Recursively find the smallest number that satisfies the pattern
-    int findSmallestNumber(string pattern, int currentPosition,
-                           int usedDigitsMask, int currentNum) {
-        // Base case: return the current number when the whole pattern is
-        // processed
-        if (currentPosition > pattern.size()) return currentNum;
-
-        int result = INT_MAX;
-        int lastDigit = currentNum % 10;
-        bool shouldIncrement =
-            currentPosition == 0 || pattern[currentPosition - 1] == 'I';
-
-        // Try all possible digits (1 to 9) that are not yet used and follow the
-        // pattern
-        for (int currentDigit = 1; currentDigit <= 9; ++currentDigit) {
-            if ((usedDigitsMask & 1 << currentDigit) == 0 &&
-                currentDigit > lastDigit == shouldIncrement)
-                result = min(result, findSmallestNumber(
-                                         pattern, currentPosition + 1,
-                                         usedDigitsMask | 1 << currentDigit,
-                                         currentNum * 10 + currentDigit));
+    string smallestNumber(string pattern) {
+        int n = pattern.length();
+        string res ="";
+        for(int i =1 ; i <= n+1 ; i++){
+           res.push_back(i+'0'); 
         }
 
-        return result;
+        while(!mathaches(res,pattern)){
+            next_permutation(res.begin(),res.end());
+        }
+        return res;
     }
 };
