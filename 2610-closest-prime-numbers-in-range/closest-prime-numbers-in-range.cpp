@@ -11,6 +11,9 @@ void sieve(int n,vector<bool> &is_prime) {
      }
   }
     vector<int> closestPrimes(int left, int right) {
+        if (left > right || right < 2) {
+            return {-1, -1};
+        }
         vector<bool> is_prime(right+1, true);
         sieve(right+1,is_prime);
         int prev = -1 ,num_1 = -1 , num_2 = -1;
