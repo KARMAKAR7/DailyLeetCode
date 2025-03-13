@@ -25,7 +25,7 @@ public:
         int n = queries.size();
 
         int left = 0  , right = n;
-        int ans = -1;
+        int ans =  -1;
         while(left <= right){
             int mid = left + (right - left)/2;
 
@@ -37,6 +37,6 @@ public:
                 left = mid + 1;
             }
         }
-        return ans;
+        return ans ;
     }
 };
