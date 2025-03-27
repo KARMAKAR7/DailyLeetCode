@@ -43,7 +43,7 @@ public:
         int rightCount = totalCount - leftCount;
         int rightSize = n - leftSize;
 
-        if (leftCount * 2 > leftSize && rightCount * 2 > rightSize) {
+        if (leftCount > leftSize/2 && rightCount  > rightSize/2) {
             return i;
         }
     }
