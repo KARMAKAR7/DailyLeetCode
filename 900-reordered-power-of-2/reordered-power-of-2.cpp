@@ -1,15 +1,17 @@
 class Solution {
 public:
+    bool isPowerOfTwo(long long x) {
+    return x > 0 && (x & (x - 1)) == 0;
+    }
     bool reorderedPowerOf2(int n) {
-        auto sortDigits = [](int x){
-            string s = to_string(x);
-            sort(s.begin(),s.end());
-            return s;
-        };
-        unordered_set<string>p;
-        for(int i = 1 ; i <= 1e9 ; i = i << 1){
-              p.insert(sortDigits(i));
+        string s = to_string(n);
+    sort(s.begin(), s.end());
+    do {
+        if (s[0] != '0') {
+            long long num = stoll(s);
+            if (isPowerOfTwo(num)) return true;
         }
-        return p.count(sortDigits(n));
+    } while (next_permutation(s.begin(), s.end()));
+    return false;
     }
 };
