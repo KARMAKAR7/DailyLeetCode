@@ -1,7 +1,8 @@
 class Solution {
 public:
-
+    #define fio ios_base::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL)
     int minimumArea(vector<vector<int>>& grid) {
+     fio;  
      int n = grid.size() , m = grid[0].size();
 
      int max_r = INT_MIN , max_c = INT_MIN , min_r = INT_MAX, min_c = INT_MAX;
