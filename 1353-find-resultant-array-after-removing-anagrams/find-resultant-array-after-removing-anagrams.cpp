@@ -1,18 +1,11 @@
 #define fio ios_base::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL)
 class Solution {
 public:
-   bool ana(string &s1 , string &s2){
-       unordered_map<char,int>f;
-       for(auto i:s1){
-            f[i]++;
-       }
-       for(auto i:s2){
-           f[i]--;
-           if(f[i]==0){
-               f.erase(i);
-           }
-       }
-       return f.empty();
+   bool ana(string s1 , string s2){
+       if(s1.size() != s2.size()) return false;
+       sort(s1.begin(),s1.end());
+       sort(s2.begin(),s2.end());
+       return s1 == s2;
    }
     vector<string> removeAnagrams(vector<string>& words) {
         fio;
