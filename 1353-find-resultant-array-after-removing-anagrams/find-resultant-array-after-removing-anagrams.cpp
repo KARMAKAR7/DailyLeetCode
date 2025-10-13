@@ -1,3 +1,4 @@
+#define fio ios_base::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL)
 class Solution {
 public:
    bool ana(string &s1 , string &s2){
@@ -14,6 +15,7 @@ public:
        return f.empty();
    }
     vector<string> removeAnagrams(vector<string>& words) {
+        fio;
         int n = words.size();
         vector<string>ans;
         for(int i = 0; i < n; i++){
