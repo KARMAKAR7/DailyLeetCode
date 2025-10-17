@@ -26,7 +26,7 @@ public:
     */
     unordered_map<string,int>dp;
     int solve(int ind , string &s,int k,int uniqueCount,bool change){
-        if(ind == s.size()){
+        if(ind >= s.size()){
             return 0;
         }
         string state = to_string(ind) + " " + to_string(uniqueCount) + " " + to_string(change);
