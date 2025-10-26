@@ -1,15 +1,12 @@
-#include <vector>
-using namespace std;
-
 class Bank {
 public:
     using ll = long long;
     vector<ll> bal; 
 
     Bank(vector<long long>& balance) {
-        bal.resize(balance.size() + 1);          
-        for (size_t i = 0; i < balance.size(); ++i) {
-            bal[i + 1] = balance[i];        
+        bal.resize(balance.size()+1);          
+        for (size_t i = 1; i <= balance.size(); ++i) {
+            bal[i] = balance[i-1];        
         }
     }
 
