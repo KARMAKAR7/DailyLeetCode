@@ -1,27 +1,19 @@
 class Solution {
 public:
-    int rowOneCount(const string &s){
-        int count = 0;
-        for(char c : s){
-            if(c == '1') count++;
-        }
-        return count;
-    } 
-
-   int numberOfBeams(vector<string>& bank) {
-    vector<int> device;
-    for(const auto& row : bank){
-        int c = rowOneCount(row);
-        if(c > 0) device.push_back(c);
+    int numberOfBeams(vector<string>& bank) {
+        int prev = 0,ans = 0;
+         for(int i = 0 ; i < bank.size();i++){
+             int curr = 0;
+             for(int j = 0 ; j < bank[0].size();j++){
+                 if(bank[i][j] == '1'){
+                     curr +=1;
+                 }
+             }
+             if(curr > 0){ 
+             ans += (prev*curr);
+             prev = curr;
+             }
+         }
+        return ans;
     }
-
-    int ans = 0;
-    if (device.size() >= 2) {
-        for(int i = 0 ; i < device.size() - 1; i++){
-            ans += device[i] * device[i + 1];
-        }
-    }
-
-    return ans;
-}
 };
