@@ -11,21 +11,21 @@
  */
 class Solution {
 public:
-      pair<TreeNode* ,int> dfs(TreeNode* root){
-         if(!root) return {NULL , 0};
+    pair<TreeNode*,int>dfs(TreeNode* root){
+         if(!root) return {NULL,0};
 
          auto left = dfs(root->left);
          auto right = dfs(root->right);
 
          if(left.second > right.second){
-            return {left.first , left.second+1};
+            return {left.first,left.second+1};
          }
          if(left.second < right.second){
             return {right.first , right.second+1};
          }
-        return {root,right.second+1};
+        return {root , right.second+1};
     }
     TreeNode* subtreeWithAllDeepest(TreeNode* root) {
-          return dfs(root).first;
+        return dfs(root).first;
     }
 };
